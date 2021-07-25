@@ -1,0 +1,13 @@
+﻿@model Genre
+<div class="col-lg-3">
+    <div class="categories__item set-bg" data-setbg=@Model.BookList.First().PictureName>
+        @*<h5><a asp-controller="Books" asp-action="List">@Model.GenreName</a></h5>*@   @*original*@
+        
+
+
+
+        <h5><a href="/Books/List?genreName=@Model.GenreName">@Model.GenreName</a></h5>   @*works!!!!!!!!!!!!!!!!!!*@
+
+
+    </div>
+</div>

@@ -1,0 +1,264 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="!Steimatzky">
+    <meta name="keywords" content="!Steimatzky, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>@ViewData["Title"]  !Steimatzky</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+    <!-- Css Styles -->
+    @{
+        var random_number = new Random();
+        int rInt = random_number.Next(0, 100); //for ints
+        int range = 100;
+
+    }
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="~/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="~/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="~/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="~/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="~/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="~/css/style.css?time=@rInt" type="text/css">
+</head>
+<body>
+    @{var books_page = "not_active"; }
+    @{var branches_page = "not_active"; }
+    @{var contact_page = "not_active"; }
+    @{var administrator_page = "not_active"; }
+    @{var statistics_page = "not_active"; }
+    @{var index_page = "not_active";}
+    @{var is_menu_open = "not_active";}
+
+
+    @if (Context.Request.Path == "/Books")
+    {
+        books_page = "active";
+    }
+    else if (Context.Request.Path == "/Branches")
+    {
+        branches_page = "active";
+    }
+    else if (Context.Request.Path == "/Contact")
+    {
+        contact_page = "active";
+    }
+    else if (Context.Request.Path == "/Administrator")
+    {
+        administrator_page = "active";
+    }
+    else if (Context.Request.Path == "/Statistics")
+    {
+        statistics_page = "active";
+    }
+    else
+    {
+        index_page = "active";
+        is_menu_open = "yes";
+    }
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="header__top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="header__top__left">
+                            <ul>
+                                <li><a href="mailto:notSteimatzky@gmail.com?subject=Customer%20Question&body=Dear%20!Steimatzky%20Team,%0a%0a%0a%0aSincrerely%20Yours,%0a"><i class="fa fa-envelope"></i></a> notSteimatzky@gmail.com</li>
+                                <li>Free shipping for online orders due to the COVID-19</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="header__top__right">
+                            <div class="header__top__right__social">
+                                <a href="https://www.facebook.com/notSteimatzky"><i class="fa fa-facebook"></i></a>
+                                <a href="https://twitter.com/Steimatzky1"><i class="fa fa-twitter"></i></a>
+                                <a href="https://www.instagram.com/notSteimatzky/"><i class="fa fa-instagram"></i></a>
+                                <a href="https://github.com/kfirbilu/BooksStore"><i class="fa fa-github"></i></a>
+                            </div>
+                            <div class="header__top__right__auth">
+                                <partial name="_LoginPartial" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="container weather_container">
+                        <div id="openweathermap-widget-24"></div>
+                        <h4 id="weather_msg" class="weather_title"></h4>
+                    </div>
+                </div>
+                <div class="header__top__right__weather">
+                    <!-- weather widget start -->
+                    <a target="_blank" href="https://www.booked.net/weather/tel-aviv-18414">
+                        <img src="https://w.bookcdn.com/weather/picture/12_18414_1_1_2071C9_118_2071C9_FFFFFF_FFFFFF_0_2071C9_FFFFFF_0_6.png?scode=2&domid=w209&anc_id=29267" alt="booked.net" />
+                        <h4 id="weather_msg" class="weather_title"></h4>
+                    </a>
+                    <!-- weather widget end -->
+
+                </div>
+            </div>
+
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3">
+                    <div class="header__logo">
+                        <a asp-controller="Home" asp-action="Index"><img src="~/img/logo.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-8">
+                    <nav class="header__menu">
+                        <ul>
+                            <li class="@index_page"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                            <li class="@books_page"><a asp-controller="Books" asp-action="Index">Shop</a></li>
+                            <li class="@branches_page"><a asp-controller="Branches" asp-action="index">Branches</a></li>
+                            <li class="@contact_page"><a asp-controller="Contact" asp-action="index">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-1 col-md-1">
+                    <div class="header__cart" id="Cart">
+                        @await Component.InvokeAsync("ShoppingCartSummary")
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <!-- Main Section Begin -->
+            <section class="main main-normal">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="main__categories">
+                                <div class="main__categories__all">
+                                    <i class="fa fa-bars"></i>
+                                    <span>All departments</span>
+                                </div>
+                                @await Component.InvokeAsync("GenresMenu")
+                            </div>
+                        </div>
+                        <div class="col-lg-9">
+                            <div class="main__search">
+                                <div class="main__search__form">
+                                    <form asp-controller="Books" asp-action="SearchTerm">
+                                        <input type="text" name="term" placeholder="Search here for books 📚">
+                                        <button type="submit" class="site-btn">SEARCH</button>
+                                    </form>
+                                </div>
+                                <div class="main__search__phone">
+                                    <div class="main__search__phone__icon">
+                                        <i class="fa fa-phone"></i>
+                                    </div>
+                                    <div class="main__search__phone__text">
+                                        <h5>03-6333333</h5>
+                                        <span>08:00 am-18:00 pm</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Main Section End -->
+        </div>
+    </header>
+    <!-- Header Section End -->
+
+    <div class="container">
+        <main role="main" class="pb-3">
+
+            @RenderBody()
+        </main>
+    </div>
+
+    <!-- Footer Section Begin -->
+    <div class="footer_main">
+    <footer class="footer spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer__about">
+                        <div class="footer__about__logo">
+                            <h5><a asp-controller="Home"><img src="img/logo-footer.png" alt="" </a></h5>
+
+                        </div>
+                        <ul>
+                            <li><i class="fa fa-map-pin">  Office: Dizengoff St. 18, Tel-Aviv</i></li>
+                            <li><i class="fa fa-phone">  Phone: 03-6333333</i></li>
+                            <li><a href="mailto:notSteimatzky@gmail.com?subject=Customer%20Question&body=Dear%20!Steimatzky%20Team,%0a%0a%0a%0aSincrerely%20Yours,%0a"><i class="fa fa-envelope"></i></a> notSteimatzky@gmail.com</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
+                    <div class="footer__widget">
+                        <h6>About Us</h6>
+                        <p>
+                            A small family book stores network, since 1994. <br />
+                            We're commited to give our custumers the best service they can get.  <br />
+                        </p>
+                        <div class="footer__widget_service">
+                            <h6>Services</h6>
+                            <ul>
+                                <li><a asp-controller="Contact" asp-action="index">Contact us</a></li>
+                                <li><a asp-controller="Branches" asp-action="index">Visit us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="footer__widget">
+                        <h6>Join Our Networks Now</h6>
+                        <p>Get updates about our latest shop and special offers.</p>
+                        <div class="footer__widget__social">
+                            <a href="https://www.facebook.com/NotSteimatzky"><i class="fa fa-facebook"></i></a>
+                            <a href="https://www.instagram.com/notsteimatzky/"><i class="fa fa-instagram"></i></a>
+                            <a href="https://twitter.com/Steimatzky1"><i class="fa fa-twitter"></i></a>
+                            <a href="https://github.com/kfirbilu/BooksStore"><i class="fa fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="footer__copyright">
+                        <div class="footer__copyright__text">
+                            <p>
+                                Copyright &copy;
+                                <script>document.write(new Date().getFullYear());</script> All rights reserved ® by BYZ Team
+                            </p>
+                        </div>
+                        <div class="footer__copyright__payment"><img src="img/payment-item.png" alt=""></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    </div>
+    <!-- Footer Section End -->
+    <!-- Js Plugins -->
+    <script src="~/js/jquery-3.3.1.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/jquery.nice-select.min.js"></script>
+    <script src="~/js/ShoppingCart/addToCart.js"></script>
+    <script src="~/js/jquery-ui.min.js"></script>
+    <script src="~/js/jquery.slicknav.js"></script>
+    <script src="~/js/mixitup.min.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/main.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+  
+    </body>
+</html>

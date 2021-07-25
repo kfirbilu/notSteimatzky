@@ -1,0 +1,17 @@
+﻿@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+}
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<h4>Actions:</h4><br />
+<ul class="nav nav-pills nav-stacked">
+    <li class="@ManageNavPages.IndexNavClass(ViewContext)"><a asp-page="./Index" class="nav-menu" title="Profile"><i class="fa fa-id-card"></i></a> |</li> 
+    <li class="@ManageNavPages.EmailNavClass(ViewContext)"><a id="email" asp-page="./Email" class="nav-menu"title="Email">&nbsp;<i class="fa fa-envelope"></i></a> |</li>
+    <li class="@ManageNavPages.ChangePasswordNavClass(ViewContext)"><a id="change-password" asp-page="./ChangePassword" class="nav-menu" title="Password">&nbsp;<i class="fa fa-key"></i></a> |</li>
+    <li class="@ManageNavPages.PersonalDataNavClass(ViewContext)"><a asp-page="./PersonalData" class="nav-menu" title="Personal Data">&nbsp;<i class="fa fa-user-secret"></i></a></li>
+    
+</ul>

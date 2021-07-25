@@ -1,0 +1,14 @@
+﻿@model IEnumerable<Genre>
+
+@{ var isOpen = "false"; }
+@if(Context.Request.Path == "/")
+{
+    isOpen = "display: block;";
+}
+
+<ul style="@isOpen">
+    @foreach (var genre in Model)
+    {
+        <li><a asp-controller="Books" asp-action="List" asp-route-genreName="@genre.GenreName">@genre.GenreName</a></li>
+    }
+</ul>

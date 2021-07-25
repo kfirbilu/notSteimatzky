@@ -1,0 +1,57 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    List<Genre> Genres = ViewData["Genres"] as List<Genre>;
+}
+
+<!-- Main Section Begin -->
+<section class="main">
+    <div class="container" id="container_home">
+        <div id="left-side">
+            <!-- You can put here whatever you like -->
+            <img src="img/banner/banner-1.jpg" alt="" class="img-banner">
+        </div>
+        <div class="video-container">
+            <video width="800" height="441" autoplay controls>
+                <source src="vid/main-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+</section>
+<!-- Main Section End -->
+<!-- Categories Section Begin -->
+<section class="categories">
+    <div class="container">
+        <div class="row">
+            <div class="categories__slider owl-carousel">
+                @foreach (var genre in Genres)
+                {
+                    <partial name="_genreCard" model="genre" />
+                }
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Categories Section End -->
+<br />
+
+<!--web services BEGIN-->
+<div class="banner">
+    <div class="container">
+       
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div id="corona_pic">
+                    <script>var LMWIDGET_width= 200; var LMWIDGET_height= 400; var LMWIDGET_postcount= 0;</script><script type="text/javascript" src="https://www.readingrockets.org/widgets/js/widgetcode/PBook.js"></script>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div id="corona_widget">
+                    <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+                <div class="elfsight-app-4cfa830b-3894-47e6-9668-dc25eb83f04c"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--web services END-->

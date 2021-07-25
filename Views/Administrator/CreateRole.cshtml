@@ -1,0 +1,34 @@
+﻿@model BooksStore.ViewModels.CreateRoleViewModel
+
+@{
+    ViewData["Title"] = "Create New Role";
+}
+
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <h2>@ViewData["Title"]</h2>
+            <div class="col-md-4">
+                <section>
+                    <form method="post">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="RoleName"></label>
+                            <input asp-for="RoleName" class="form-control" />
+                            <span asp-validation-for="RoleName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Create Role</button>
+                            <a class="btn btn-primary" style="width:auto"
+                               asp-controller="Administrator" asp-action="ListRoles">Cancel</a>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>

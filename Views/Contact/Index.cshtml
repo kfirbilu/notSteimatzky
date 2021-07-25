@@ -1,0 +1,99 @@
+﻿@{
+    ViewData["Title"] = "Contact";
+}
+
+<!-- Banner Section Begin -->
+<section class="banner-section set-bg" data-setbg="img/bluebanner.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="banner__text">
+                    <h2>Contact Us</h2>
+                    <div class="banner__option">
+                        <a asp-controller="Home" asp-action="Index">Home</a>
+                        <span>Contact</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Banner Section End -->
+
+<!-- Contact Section Begin -->
+<section class="contact spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-6 text-center">
+                <div class="contact__widget">
+                    <span class="icon_phone"></span>
+                    <h4>Phone</h4>
+                    <p><a href="tel:036333333">03-6333333</a></p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 text-center">
+                <div class="contact__widget">
+                    <span class="icon_pin_alt"></span>
+                    <h4>Office Address</h4>
+                    <p>Dizengoff Street 18, Tel Aviv</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 text-center">
+                <div class="contact__widget">
+                    <span class="icon_clock_alt"></span>
+                    <h4>Open time</h4>
+                    <p>Everyday - 08:00 am to 18:00 pm</p>
+                    <p>Friday - 08:00 am to 14:00 pm</p>
+                    <p>Saturday - 21:00 pm to 23:00 pm</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 text-center">
+                <div class="contact__widget">
+                    <span class="icon_mail_alt"></span>
+                    <h4>Email</h4>
+                    <p><a href="mailto:notSteimatzky@gmail.com?subject=Customer%20Question&body=Dear%20!Steimatzky%20Team,%0a%0a%0a%0aSincrerely%20Yours,%0a">notSteimatzky@gmail.com</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Contact Section End -->
+
+<!-- Map Begin -->
+<div class="map">
+    <iframe src="https://maps.google.com/maps?q=dizengoff%20st%2018%2C%20tel%20aviv&t=&z=17&ie=UTF8&iwloc=&output=embed"
+            height="500" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+    <div class="map-inside">
+        <i class="icon_pin"></i>
+        <div class="inside-widget">
+            <h4>Tel-Aviv</h4>
+            <ul>
+                <li>Phone: 03-6333333</li>
+                <li>Add: Dizengoff Street 18, Tel-Aviv</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Map End -->
+
+<!-- Canvas Begin -->
+<div class="contact-form spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="contact__form__title">
+                    <canvas id="myCanvas" width="250" height="100">
+                    </canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Canvas End -->
+
+<script>
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    ctx.font = "30px Arial";
+    ctx.fillText("See You Soon!", 10, 50);
+</script>

@@ -1,0 +1,42 @@
+﻿@model BooksStore.ViewModels.ShoppingCartViewModel
+
+<div class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+        <i class="fa fa-shopping-cart fa-spin"></i>
+        <span>Your Cart</span>
+        <div class="qty" id="count_Products">@Model.ShoppingCart.ShoppingCartItems.Sum(i => i.Quantity)</div>
+    </a>
+    <div class="cart-dropdown">
+
+        <div class="cart-list">
+            @foreach (var item in Model.ShoppingCart.ShoppingCartItems)
+            {
+                <div class="product-widget" id="product-@item.Book.BookName">
+                    <div class="product-img">
+                        <img src="@item.Book.PictureName" alt="">
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-name"><a href="#">@item.Book.BookName</a></h3>
+                        <h4 class="product-price"><span class="qty">@item.Quantity X </span>@item.Book.Price</h4>
+                    </div>
+                    <a class="delete" asp-controller="ShoppingCart" asp-action="RemoveFromShoppingCart"
+                       asp-route-productId="@item.Book.BookId">
+                        <i class="fa fa-close"></i>
+                    </a>
+
+                </div>
+            }
+
+        </div>
+
+        <div class="cart-summary">
+            <small id="count_Products2">@Model.ShoppingCart.ShoppingCartItems.Count Item(s) selected</small>
+            <h5 id="total_Price">@Model.ShoppingCartTotal.ToString("c")</h5>
+        </div>
+
+        <div class="cart-btns">
+            <a asp-controller="ShoppingCart" asp-action="Index">View Cart</a>
+            <a asp-controller="Orders" asp-action="Checkout">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+</div>

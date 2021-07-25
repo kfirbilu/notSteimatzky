@@ -1,0 +1,25 @@
+﻿@model BooksStore.ViewModels.BookListViewModel
+
+<div id="product-main-img">
+    @foreach (var book in Model.Books)
+    {
+    <div class="details-view" style="margin-bottom: 50px;" productId="@book.BookId">
+        <div class="product-preview col-md-4" style="float:left">
+            <img src="@book.PictureName" alt="">
+        </div>
+        <div class="col-md-8" style="float:right">
+            <h2 class="product-name">@book.BookName</h2>
+            <h3 class="product-price">@book.Price.ToString("c")</h3>
+            <p>@book.Summary</p>
+            <div class="add-to-cart">
+                <button id="addProduct" onclick="AddToCart(@book.BookId)" value="Add to Cart" class="primary-btn-add-cart cta-btn">
+                    <i class="fa fa-shopping-cart"></i> Add to Cart
+                </button>
+            </div>
+            <hr />
+        </div>
+        <div style="clear:both; margin-top:50px;"></div>
+    </div>
+        
+    }
+</div>

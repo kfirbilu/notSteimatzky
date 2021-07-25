@@ -1,0 +1,11 @@
+﻿
+@model BooksStore.ViewModels.BookListViewModel
+
+<div id="product-imgs">
+    @foreach (var book in Model.Books)
+    {
+        <div class="product-preview" productId="@book.BookId.">
+            <img src="@book.PictureName" alt="">
+        </div>
+    }
+</div>

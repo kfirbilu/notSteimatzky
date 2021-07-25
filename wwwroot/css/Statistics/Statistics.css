@@ -1,0 +1,18 @@
+﻿
+.stats_container {
+    margin-top: 30px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.graph {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.16), 0 0 0 3px rgba(0, 0, 0, 0.08);
+    padding: 15px;
+    margin: 15px;
+    text-size-adjust:auto;
+}
+

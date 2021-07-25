@@ -1,0 +1,188 @@
+﻿@model Order
+
+<head>
+    @{
+        var random_number = new Random();
+        int rInt = random_number.Next(0, 100); //for ints
+        int range = 100;
+
+    }
+
+    <link rel="stylesheet" href="~/css/checkout.css?time=@rInt" type="text/css">
+</head>
+
+<!-- Banner Section Begin -->
+<section class="banner-section set-bg" data-setbg="img/bluebanner.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="banner__text">
+                    <h2>Checkout</h2>
+                    <div class="banner__option">
+                        <a asp-controller="Home" asp-action="Index">Home</a>
+                        <span>Checkout</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Banner Section End -->
+
+<!--Payment Cpmpletion Begin-->
+<form asp-action="Checkout" asp-route-userId="@ViewData["UserId"]" method="post" role="form">
+    <div id="wrap">
+	    <div id="grid">
+		    <div class="column column1">
+			    <div class="step" id="step1">
+				    <div class="number">
+					    <span>1</span>
+			    </div>
+			    <div class="title">
+				    <h4 class="checkout_h4">Email Address</h4>
+			    </div>
+		    </div>
+		    <div class="content" id="email">
+			    <div class="form-group">
+                    <input asp-for="User" class="input alert alert-dismissible" type="text" name="email" value="@ViewData["User"]" id="email-address" data-type="email" placeholder="User Id"disabled />    
+                </div>
+		    </div>
+		    <div class="step" id="step2">
+			    <div class="number">
+				    <span>2</span>
+			    </div>
+			    <div class="title">
+				    <h4 class="checkout_h4">Delivery Info</h4>
+			    </div>
+		    </div>
+		    <div class="content" id="address">
+				<div class="form-group">
+                    <input asp-for="FirstName" class="input" type="text" placeholder="First Name" />
+                    <b><span asp-validation-for="FirstName" class="text-danger"></span></b>
+                </div>
+                <div class="form-group">
+                    <input asp-for="LastName" class="input" type="text" placeholder="Last Name" />
+                    <b><span asp-validation-for="LastName" class="text-danger"></span></b>				
+                </div>
+				<div class="form-group">
+                    <input asp-for="Address" class="input" type="text" placeholder="Street" />
+                    <b><span asp-validation-for="Address" class="text-danger"></span></b>				
+                </div>
+               <div class="form-group">
+                    <input asp-for="City" class="input" type="text" placeholder="City" />
+                    <b><span asp-validation-for="City" class="text-danger"></span></b>
+                </div>
+                <div class="form-group">
+                    <input asp-for="Country" class="input" type="text" placeholder="Country" />
+                    <b><span asp-validation-for="Country" class="text-danger"></span></b>
+                </div>
+                <div class="form-group">
+                    <input asp-for="PhoneNumber" class="input" type="tel" placeholder="Phone-Number" />
+                    <b><span asp-validation-for="PhoneNumber" class="text-danger"></span></b>
+                </div>
+		    </div>
+	    </div>
+	    <div class="column column2">
+		    <div class="step" id="step3">
+			    <div class="number">
+				    <span>3</span>
+			    </div>
+			    <div class="title">
+				    <h4 class="checkout_h4">Shipping</h4>
+			    </div>
+		    </div>
+		    <div class="content" id="shipping">
+				<p>		
+					<input type="radio" id="shipping_1" value="1"/><label for="shipping_1">Shipping Only <span class="price">(Free - COVID-19)</span></label>
+                        <div class="form-group" style="margin-left: 40px;">
+                            <h6 style="color:#999;text-decoration:underline;font-weight:400;">Select the closest branch:</h6> <br />
+                            @Html.DropDownList("BranchId", null, htmlAttributes: new { @class = "input-select" })
+                        </div>
+				</p>
+		    </div>
+		    <div class="step" id="step4">
+			    <div class="number">
+				    <span>4</span>
+			    </div>
+			    <div class="title">
+				    <h4 class="checkout_h4">Payment</h4>
+			    </div>
+		    </div>
+			    <div class="content" id="payment label">
+				    <div class="content2" id="shipping">
+						    <p>		
+							    <input type="radio" id="shipping_1" value="1"/><label for="shipping_1">Payment on delivery ONLY <br /> by Credit/Cash</label>
+						    </p>
+				    </div>
+			    </div>
+			    <div class="right">
+				    <div class="secured">
+					    <img class="lock" src="https://i.imgur.com/hHuibOR.png">
+					    <span class="secured-text">Secured Payment by !Steimatzky ltd.</span>
+				    </div>
+				    <div class="accepted">
+					    <img src="~/img/payment-item.png">
+				    </div>
+			    </div>
+ 		    </div>
+ 	    </div>
+ 	    <div class="column column3">
+ 		    <div class="step" id="step5">
+			    <div class="number">
+				    <span>5</span>
+			    </div>
+			    <div class="title">
+				    <h4 class="checkout_h4">Finalize Order</h4>
+			    </div>
+		    </div>
+		    <div class="content" id="final_products">
+			    <div class="left" id="ordered">
+				        <div class="totals" id="itemsShop" action="/Orders/GetOrderDetails">		    
+					        <span class="subtitle">Subtotal <span class="sub_price" id="order-totalPrice"></span></span>
+                            <span class="subtitle">Tax (17%)  <span class="sub_price" id="order-tax"></span></span>
+                            <span class="subtitle">Shipping <span class="sub_price">FREE</span></span>   
+				        </div>
+				        <div class="final">
+                            <span class="title">Total  <span class="calculated_total" id="order-totalPriceAfterTax"></span></span>
+				        </div>
+			    </div>	
+			    <div class="right" id="reviewed">
+                    <div>
+                         <a href="/ShoppingCarts/Index">
+                            <button type="button" class="site-btn">Edit Cart</button>
+                         </a>
+                    </div>
+				    <div id="complete">
+					    <button type="submit" id="placeOrder" class="button-done" disabled>Complete Order</button>
+						    <div class="input-checkbox">
+							      <label for="terms">
+									    <span class="sub">By selecting this button you agree to the purchase and subsequent payment for this order.<br/>
+									    <input type="checkbox" id="terms" onclick="acceptTerms()">
+									    I've read and accept the <a asp-action="Terms">terms & conditions</a></span>
+							    </label>
+						    </div>
+                     </div>
+			    </div>
+		    </div>
+	    </div>
+    </div>
+</form>
+<!--Payment Cpmpletion End-->
+
+@section Scripts {
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+    <script src="~/js/Checkout/displayOrderdetails.js"></script>
+    <script src="~/js/Checkout/acceptTerms.js"></script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script id="restuls" type="text/html">
+
+        <div class="order-col">
+            <div>${id}</div>
+            <div>${book}</div>
+            <div>${quantity}</div>
+            <div>${price}</div>
+        </div>
+
+    </script>
+}
