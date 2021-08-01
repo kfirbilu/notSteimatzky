@@ -17,7 +17,7 @@ namespace BooksStore.Models
         public string BookName { get; set; }
 
         [Required]
-        [Range(0, double.MaxValue)]
+        [Range(1, 9999)]
         public double Price { get; set; }
 
         [Required]
