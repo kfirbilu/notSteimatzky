@@ -1,14 +1,15 @@
-﻿using BooksStore.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BooksStore.Models;
 
-namespace BooksStore.ViewModels
+namespace BooksStore.Views.ShoppingCarts
 {
-    public class ShoppingCartViewModel
+    public class ShoppingCartView
     {
         public ShoppingCart ShoppingCart { get; set; }
         public double ShoppingCartTotal { get; set; }
+
     }
 }

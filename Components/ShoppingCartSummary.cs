@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 using BooksStore.Data;
 using BooksStore.Models;
 using Microsoft.EntityFrameworkCore;
-using BooksStore.ViewModels;
+// using BooksStore.ViewModels; // changedtoday
+using BooksStore.Views.ShoppingCarts;
 
 namespace BooksStore.Components
 {
@@ -31,7 +32,7 @@ namespace BooksStore.Components
             var total = _context.ShoppingCartItems.Where(c => c.ShoppingCartId == _shoppingCart.ShoppingCartId)
                 .Select(c => c.Book.Price * c.Quantity).Sum();
 
-            var shoppingCartViewModel = new ShoppingCartViewModel
+            var shoppingCartViewModel = new ShoppingCartView // changedtoday
             {
                 ShoppingCart = _shoppingCart,
                 ShoppingCartTotal = total

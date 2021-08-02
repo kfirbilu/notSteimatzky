@@ -9,7 +9,8 @@ using BooksStore.Data;
 using BooksStore.Models;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Cryptography.X509Certificates;
-using BooksStore.ViewModels;
+//using BooksStore.ViewModels; //changedtoday
+using BooksStore.Views.ShoppingCarts;
 
 namespace BooksStore.Controllers
 {
@@ -35,7 +36,7 @@ namespace BooksStore.Controllers
                 .Include(s => s.Book)
                 .ToListAsync());
 
-            var shoppingCartViewModel = new ShoppingCartViewModel
+            var shoppingCartViewModel = new ShoppingCartView // changedtoday
             {
                 ShoppingCart = _shoppingCart,
                 ShoppingCartTotal = await GetShoppingCartITotal()
