@@ -3,8 +3,11 @@
 
 @using Microsoft.AspNetCore.Authorization
 @inject Microsoft.AspNetCore.Authorization.IAuthorizationService authorizationService;
+@*@model BooksStore.ViewModels.BookListViewModel changedtoday*@
+@model BooksStore.Views.Books.BookListView
 
-@model BooksStore.ViewModels.BookListViewModel
+
+
 
 <section class="banner-section set-bg" data-setbg="img/bluebanner.jpg">
     <div class="container">
@@ -40,13 +43,13 @@
                     }
                 }
             }
-            
+
             <div class="col-md-7">
                 <div id="main-imgs">
-                    
+
                     <partial name="_detailsView" model="@Model" />
                 </div>
-                
+
             </div>
 
         </div>
@@ -55,5 +58,5 @@
 
 @section Scripts {
     <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
-   
+
 }

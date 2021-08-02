@@ -1,4 +1,5 @@
-﻿@model BooksStore.ViewModels.ShoppingCartViewModel
+﻿@*@model BooksStore.ViewModels.ShoppingCartViewModel  changedtoday*@
+@model BooksStore.Views.ShoppingCarts.ShoppingCartView
 
 <div class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
@@ -20,7 +21,7 @@
                         <h4 class="book-price"><span class="qty">@item.Quantity X </span>@item.Book.Price</h4>
                     </div>
                     <a class="delete" asp-controller="ShoppingCarts" asp-action="RemoveFromShoppingCart"
-                        asp-route-bookId="@item.Book.BookId">
+                       asp-route-bookId="@item.Book.BookId">
                         <i class="fa fa-close"></i>
                     </a>
                 </div>

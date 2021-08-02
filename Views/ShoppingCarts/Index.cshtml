@@ -1,4 +1,7 @@
-﻿@model BooksStore.ViewModels.ShoppingCartViewModel
+﻿@*@model BooksStore.ViewModels.ShoppingCartViewModel  changedtoday*@
+
+@model BooksStore.Views.ShoppingCarts.ShoppingCartView
+
 
 @{
     ViewData["Title"] = "Index";
@@ -83,40 +86,39 @@
 </table>
 <hr />
 <!--Cart Products End -->
-
 <!--Cart Summary Begin-->
 @{
-    var GrandSubtotals= Math.Round(Model.ShoppingCartTotal,2);
-    var Tax = Math.Round(GrandSubtotals * 0.17,2);
-    var GradnTotal= Math.Round(GrandSubtotals + Tax,2);
+    var GrandSubtotals = Math.Round(Model.ShoppingCartTotal, 2);
+    var Tax = Math.Round(GrandSubtotals * 0.17, 2);
+    var GradnTotal = Math.Round(GrandSubtotals + Tax, 2);
 
-<section class="bottom-right">
-    <table>
-        <thead>
-            <tr> 
-                <th></th>  
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr> 
-                <th> Subtotal </th>
-                <td> @GrandSubtotals$</td>
-            <tr> 
-                <th> Tax (17%) </th>
-                <td> @Tax$</td>
-            <tr> 
-                <th> Shipping </th>
-                <td> Free </td>
-            <tr> 
-                <th> Grand Total </th>
-                <td> @GradnTotal$</td>
-            </tr>
-    </table> <br />
-    <a href="/Orders/Checkout">
-        <button type="button" class="site-btn">Procceed To Checkout</button>
-    </a>
-</section>
+    <section class="bottom-right">
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th> Subtotal </th>
+                    <td> @GrandSubtotals$</td>
+                <tr>
+                    <th> Tax (17%) </th>
+                    <td> @Tax$</td>
+                <tr>
+                    <th> Shipping </th>
+                    <td> Free </td>
+                <tr>
+                    <th> Grand Total </th>
+                    <td> @GradnTotal$</td>
+                </tr>
+        </table> <br />
+        <a href="/Orders/Checkout">
+            <button type="button" class="site-btn">Procceed To Checkout</button>
+        </a>
+    </section>
 }
 
 <!--Cart Summary End-->
