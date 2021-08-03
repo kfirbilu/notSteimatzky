@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace BooksStore.Views.Administrator
 {
-    public class UserRoleView  // changedtoday
+    public class UserRoleView  
     {
         public string UserId { get; set; }
         public string UserName { get; set; }

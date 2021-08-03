@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-// using BooksStore.ViewModels; //changedtoday
 using BooksStore.Views.Admin;
 using BooksStore.Views.Administrator;
 
@@ -48,7 +47,7 @@ namespace BooksStore.Controllers
             var userClaims = await _userManager.GetClaimsAsync(user);
             var userRoles = await _userManager.GetRolesAsync(user);
 
-            var model = new EditUserView // changedtoday
+            var model = new EditUserView 
             {
                 Id = user.Id,
                 Email = user.Email,
@@ -61,7 +60,7 @@ namespace BooksStore.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> EditUser(EditUserView model) // changedtoday
+        public async Task<IActionResult> EditUser(EditUserView model) 
         {
             var user = await _userManager.FindByIdAsync(model.Id);
 
@@ -131,7 +130,7 @@ namespace BooksStore.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateRole(CreateRoleView model) // changedtoday
+        public async Task<IActionResult> CreateRole(CreateRoleView model) 
         {
             if (ModelState.IsValid)
             {
@@ -167,7 +166,7 @@ namespace BooksStore.Controllers
                 return View("NotFound");
             }
 
-            var model = new EditRoleView //changedtoday
+            var model = new EditRoleView 
             {
                 Id = role.Id,
                 RoleName = role.Name
@@ -185,7 +184,7 @@ namespace BooksStore.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> EditRole(EditRoleView model) // changedtoday
+        public async Task<IActionResult> EditRole(EditRoleView model) 
         {
             var role = await _roleManager.FindByIdAsync(model.Id);
 
@@ -265,11 +264,11 @@ namespace BooksStore.Controllers
                 return View("NotFound");
             }
 
-            var model = new List<UserRoleView>(); //changedtoday
+            var model = new List<UserRoleView>(); 
 
             foreach (var user in _userManager.Users)
             {
-                var userRoleViewModel = new UserRoleView //changedtoday
+                var userRoleViewModel = new UserRoleView 
                 {
                     UserId = user.Id,
                     UserName = user.UserName
@@ -291,7 +290,7 @@ namespace BooksStore.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> EditUsersInRole(List<UserRoleView> model, string roleId) //changedtoday
+        public async Task<IActionResult> EditUsersInRole(List<UserRoleView> model, string roleId) 
         {
 
             var role = await _roleManager.FindByIdAsync(roleId);
@@ -347,11 +346,11 @@ namespace BooksStore.Controllers
                 return View("NotFound");
             }
 
-            var model = new List<UserRolesView>();  // changedtoday
+            var model = new List<UserRolesView>();  
 
             foreach (var role in _roleManager.Roles)
             {
-                var userRolesViewModel = new UserRolesView  // changedtoday
+                var userRolesViewModel = new UserRolesView  
                 {
                     RoleId = role.Id,
                     RoleName = role.Name
@@ -373,7 +372,7 @@ namespace BooksStore.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> ManageUserRoles(List<UserRolesView> model, string userId)  // changedtoday
+        public async Task<IActionResult> ManageUserRoles(List<UserRolesView> model, string userId) 
         {
 
             var user = await _userManager.FindByIdAsync(userId);

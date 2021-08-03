@@ -16,7 +16,7 @@ namespace BooksStore.Views.Admin
     }
 
 
-    public class CreateRoleView  //changedtoday
+    public class CreateRoleView  
     {
         [Required]
         public string RoleName { get; set; }

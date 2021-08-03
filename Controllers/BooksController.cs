@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BooksStore.Data;
 using BooksStore.Models;
-//using BooksStore.ViewModels; //changedtoday
 using System.Security.Cryptography.X509Certificates;
 using BooksStore.Tweeter;
 using Microsoft.AspNetCore.Http;
@@ -15,7 +14,6 @@ using Microsoft.AspNetCore.Authorization;
 using System.IO;
 using BooksStore.Tweeter;
 using BooksStore.Views.Books;
-//using ConsoleApplication;
 using Tweetinvi.Parameters;
 
 namespace BooksStore.Controllers
@@ -265,7 +263,7 @@ namespace BooksStore.Controllers
                 currentGenre = _context.Genres.FirstOrDefault(c => c.GenreName == genreName)?.GenreName;
             }
 
-            return View(new BookListView //changedtoday
+            return View(new BookListView 
             {
                 Books = books,
                 CurrentGenre = currentGenre
@@ -294,7 +292,7 @@ namespace BooksStore.Controllers
 
             else
             {
-                return View("List", new BookListView //changedtoday
+                return View("List", new BookListView
                 {
                     Books = query,
                     CurrentGenre = "Search Results"
@@ -315,7 +313,7 @@ namespace BooksStore.Controllers
 
             else
             {
-                return View("List", new BookListView //changedtoday
+                return View("List", new BookListView 
                 {
                     Books = query,
                     CurrentGenre = "Search Results"
@@ -336,7 +334,7 @@ namespace BooksStore.Controllers
 
             else
             {
-                return View("List", new BookListView //changedtoday
+                return View("List", new BookListView 
                 {
                     Books = query,
                     CurrentGenre = "Search Results"
@@ -357,7 +355,7 @@ namespace BooksStore.Controllers
 
             else
             {
-                return View("List", new BookListView //changedtoday
+                return View("List", new BookListView 
                 {
                     Books = query,
                     CurrentGenre = "Search Results"
@@ -369,7 +367,7 @@ namespace BooksStore.Controllers
         {
             IEnumerable<Book> books = GetAllBooks.Where(b => b.BookId == bookId);
 
-            return View("List", new BookListView //changedtoday
+            return View("List", new BookListView 
             {
                 Books = books,
                 CurrentGenre = "Search Results"

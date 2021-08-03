@@ -17,7 +17,7 @@ namespace BooksStore.Views.Administrator
 
 
 
-    public class EditUserView  // changedtoday
+    public class EditUserView  
     {
         public EditUserView()
         {

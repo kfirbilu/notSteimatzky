@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BooksStore.Models;
 
-namespace BooksStore.Views.Genres  // changedtoday
+namespace BooksStore.Views.Genres  
 {
     public class GenreCardView
     {
