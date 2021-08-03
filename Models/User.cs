@@ -29,5 +29,14 @@ namespace BooksStore.Models
         [Required]
         [Display(Name = "Is Manager")]
         public Boolean IsAdmin { get; set; }
+
+
+        [Display(Name = "Credit Card Number")]
+        public int? CreditCardNumberId { get; set; }
+
+        public virtual CreditCard CreditCard { get; set; }
+
+
+
     }
 }

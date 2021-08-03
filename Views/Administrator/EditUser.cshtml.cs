@@ -35,6 +35,11 @@ namespace BooksStore.Views.Administrator
         [EmailAddress]
         public string Email { get; set; }
 
+
+        [CreditCard]
+        public string CreditCard { get; set; }
+
+
         public List<string> Claims { get; set; }
         public IList<string> Roles { get; set; }
     }

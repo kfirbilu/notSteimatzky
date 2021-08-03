@@ -4,14 +4,16 @@ using BooksStore.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BooksStore.Migrations
 {
     [DbContext(typeof(BooksStoreContext))]
-    partial class BooksStoreContextModelSnapshot : ModelSnapshot
+    [Migration("20210803141704_userMigration")]
+    partial class userMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
